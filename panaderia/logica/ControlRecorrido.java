@@ -1,5 +1,7 @@
 package panaderia.logica;
 
+import java.util.List;
+
 import panaderia.datos.EscritorArchivoOrdenes;
 import panaderia.entidades.base.Recorrido;
 import panaderia.entidades.pedido.OrdenPedido;
@@ -26,7 +28,27 @@ public class ControlRecorrido {
 	
 	
 	// COMPLETAR LOS MÉTODOS QUE FALTAN
-	
+
+	public boolean existeTienda(String codigoTienda) {
+		return true;
+	}
+
+	public void crearOrden(String nombreArchivoProductos, String codigoTienda) {
+
+	}
+
+	public void crearDetalle(OrdenPedido orden, String [] datosBaseDetalle) {
+
+	}
+
+	public String obtenerDatosTienda(String codigoTienda) {
+		return "";
+	}
+
+	public List<String> obtenerDetallesOrdenados() {
+		return ;
+	}
+
 	/**
 	 * Envía la orden para que su información 
 	 * se guarde en un archivo, y luego
@@ -39,3 +61,8 @@ public class ControlRecorrido {
 		ordenEnProceso = null;
 	}
 }
+
+
+
+
+
