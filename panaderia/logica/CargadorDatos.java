@@ -4,6 +4,7 @@ import java.util.List;
 
 import panaderia.datos.DatosPruebaTiendas;
 import panaderia.datos.IFuenteDatos;
+import panaderia.entidades.base.Producto;
 import panaderia.entidades.base.Recorrido;
 import panaderia.entidades.base.Tienda;
 
@@ -66,6 +67,12 @@ public class CargadorDatos {
 	 * crea los objetos y los guarda en el objeto recorrido.
 	 */
 	private void cargarDatosProductos(List<String[]> datosBase) {
-		// FALTA COMPLETAR EL CÓDIGO
+		for (String[] datoBaseProducto: datosBase) {
+			String codigo = datoBaseProducto[0];
+			String nombre = datoBaseProducto[1];
+			double valorUnitario = Double.parseDouble(datoBaseProducto[2]);
+			Producto producto = new Producto(codigo, nombre, valorUnitario);
+			this.recorrido.addProducto(producto);
+		}
 	}
 }
