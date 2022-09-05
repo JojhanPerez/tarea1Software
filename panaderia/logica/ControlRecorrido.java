@@ -3,6 +3,7 @@ package panaderia.logica;
 import java.util.List;
 
 import panaderia.datos.EscritorArchivoOrdenes;
+import panaderia.entidades.base.Producto;
 import panaderia.entidades.base.Recorrido;
 import panaderia.entidades.base.Tienda;
 import panaderia.entidades.pedido.OrdenPedido;
@@ -44,18 +45,29 @@ public class ControlRecorrido {
 
 	public void crearOrden(String nombreArchivoProductos, String codigoTienda) {
 
+		
+
 	}
 
 	public void crearDetalle(OrdenPedido orden, String [] datosBaseDetalle) {
 
+		Producto productoDetalle = recorrido.buscarProducto(datosBaseDetalle[0]);
+
+		orden.addDetalle(productoDetalle, Integer.parseInt(datosBaseDetalle[1]));
 	}
 
 	public String obtenerDatosTienda(String codigoTienda) {
-		return "";
+		
+		Tienda tienda = recorrido.buscarTienda(codigoTienda);
+
+		return tienda.toString();
+
 	}
 
 	public List<String> obtenerDetallesOrdenados() {
-		return ;
+		
+		return ordenEnProceso.getDetallesOrdenados();
+
 	}
 
 	/**
