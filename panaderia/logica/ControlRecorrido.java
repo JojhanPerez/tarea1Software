@@ -4,6 +4,7 @@ import java.util.List;
 
 import panaderia.datos.EscritorArchivoOrdenes;
 import panaderia.entidades.base.Recorrido;
+import panaderia.entidades.base.Tienda;
 import panaderia.entidades.pedido.OrdenPedido;
 
 /**
@@ -30,7 +31,15 @@ public class ControlRecorrido {
 	// COMPLETAR LOS MÉTODOS QUE FALTAN
 
 	public boolean existeTienda(String codigoTienda) {
-		return true;
+		
+		Tienda tiendaPrueba = recorrido.buscarTienda(codigoTienda);
+		
+		if (tiendaPrueba != null) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	public void crearOrden(String nombreArchivoProductos, String codigoTienda) {
