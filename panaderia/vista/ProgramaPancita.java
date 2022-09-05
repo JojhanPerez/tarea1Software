@@ -1,5 +1,6 @@
 package panaderia.vista;
 
+import java.util.List;
 import java.util.Scanner;
 
 import panaderia.logica.ControlRecorrido;
@@ -51,18 +52,42 @@ public class ProgramaPancita {
 	 */
 	private void procesarUnaOrden() {
 		// COMPLETAR:
-		
 		// PRIMERO PEDIR EL CÓDIGO DE LA TIENDA
+		Scanner datosUsuario = new Scanner(System.in);
+		System.out.println("Ingrese el código de la tienda: ");
+		String codigo = datosUsuario.nextLine();
 		// Y VERIFICAR SI EXISTE.
-		
+		if (control.existeTienda(codigo) == false) {
+			System.out.println("Tienda no encontrada");
+		}
+
 		// SI EXISTE:
 		// PEDIR LA RUTA CON LOS PRODUCTOS DEL PEDIDO
+		System.out.println("Ingrese la ruta con los productos del pedido: ");
+		String rutaPedido = datosUsuario.nextLine();
 		// Y SOLICITAR AL CONTROL CREAR LA ORDEN.
-		
+		control.crearOrden(rutaPedido, codigo);
+
 		// LUEGO: PEDIR AL CONTROL LOS DATOS DE LA TIENDA
 		// Y LOS DETALLES ORDENADOS, PARA MOSTRAR AL USUARIO.
-		
+		String tienda = control.obtenerDatosTienda(codigo);
+		System.out.println(tienda);
+
+		List<String> listaDetalles = control.obtenerDetallesOrdenados();
+		for (String detallesOrdenados : listaDetalles) {
+			System.out.println(detallesOrdenados);
+		}
+
 		// PREGUNTAR SI DESEA ACEPTAR. SI ACEPTA:
 		// INFORMAR AL CONTROL PARA QUE GUARDE LA ORDEN.
+		String aceptar;
+		System.out.println("¿Esta deacuerdo con la Orden? (S/N): ");
+		aceptar = datosUsuario.nextLine();
+		if (aceptar.equals("S")) {
+			control.guardarOrden();
+		} else {
+			System.out.println("Orden no aceptada");
+		}
+
 	}
 }
