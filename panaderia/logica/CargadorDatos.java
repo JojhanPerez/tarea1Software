@@ -2,6 +2,7 @@ package panaderia.logica;
 
 import java.util.List;
 
+import panaderia.datos.DatosPruebaProductos;
 import panaderia.datos.DatosPruebaTiendas;
 import panaderia.datos.IFuenteDatos;
 import panaderia.entidades.base.Producto;
@@ -41,7 +42,7 @@ public class CargadorDatos {
 		// FALTA CARGAR LOS DATOS DE LOS PRODUCTOS:
 		// PRIMERO HACERLO CON LA CLASE DE PRUEBA,
 		// Y LUEGO CON LA QUE LEE DE UN ARCHIVO.
-		IFuenteDatos fuenteDatosProductos = null; // CAMBIAR POR EL OBJETO CORRESPONDIENTE
+		IFuenteDatos fuenteDatosProductos = new DatosPruebaProductos(); // CAMBIAR POR EL OBJETO CORRESPONDIENTE
 		List<String[]> datosBaseProductos = 
 				fuenteDatosProductos.obtenerDatosBase();
 		this.cargarDatosProductos(datosBaseProductos);
