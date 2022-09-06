@@ -58,6 +58,7 @@ public class CargadorDatos {
 			String codigo = datoBaseTienda[0];
 			String nombre = datoBaseTienda[1];
 			Tienda tienda = new Tienda(codigo, nombre);
+			System.out.println(tienda);
 			this.recorrido.addTienda(tienda);
 		}
 	}
