@@ -64,7 +64,10 @@ public class ControlRecorrido {
 
 		Producto productoDetalle = recorrido.buscarProducto(datosBaseDetalle[0]);
 
-		orden.addDetalle(productoDetalle, Integer.parseInt(datosBaseDetalle[1]));
+		if (productoDetalle != null) {
+			orden.addDetalle(productoDetalle, Integer.parseInt(datosBaseDetalle[1]));
+		}
+
 	}
 
 	public String obtenerDatosTienda(String codigoTienda) {
