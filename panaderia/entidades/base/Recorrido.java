@@ -21,7 +21,7 @@ public class Recorrido {
     }
 
     public void addTienda(Tienda tienda) {
-    	if (buscarTienda(tienda.getCodigo()) != null) {
+    	if (this.buscarTienda(tienda.getCodigo()) != null) {
     		//throw new IllegalArgumentException();
     	}
         this.tiendas.add(tienda);
