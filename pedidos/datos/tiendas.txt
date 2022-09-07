@@ -1,0 +1,6 @@
+10-10,La Esquina
+10-20,El encuentro
+10-30,Tinteadero
+10-40,La Equina
+10-50,El Voladero
+10-60,El Ventiadero

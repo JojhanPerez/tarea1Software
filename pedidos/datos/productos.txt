@@ -1,0 +1,6 @@
+0001,Pan Trensa,2000
+0002,Pan Agridulse,500
+0003,Pan Hawaiano,3000
+0004,Pan de Bono,1000
+0005,Roscon,5000
+0006,Empanada,1500
