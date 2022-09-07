@@ -1,10 +1,12 @@
 package panaderia.logica;
 
+import java.io.IOException;
 import java.util.List;
 
 import panaderia.datos.DatosPruebaProductos;
 import panaderia.datos.DatosPruebaTiendas;
 import panaderia.datos.IFuenteDatos;
+import panaderia.datos.LectorArchivo;
 import panaderia.entidades.base.Producto;
 import panaderia.entidades.base.Recorrido;
 import panaderia.entidades.base.Tienda;
@@ -28,12 +30,13 @@ public class CargadorDatos {
 	/**
 	 * Carga los datos iniciales que necesita el programa:
 	 * tiendas y productos.
+	 * @throws IOException
 	 */
-	public void cargarDatosIniciales() {
+	public void cargarDatosIniciales() throws IOException {
 		// SE DEBE CAMBIAR ESTA FUENTE, QUE ES DE PRUEBA
 		// POR UNA QUE LEA LOS DATOS DE UN ARCHIVO.
 		IFuenteDatos fuenteDatosTiendas = 
-				new DatosPruebaTiendas();
+				new LectorArchivo("datos/tiendas.txt");
 		
 		List<String[]> datosBaseTiendas = 
 				fuenteDatosTiendas.obtenerDatosBase();
@@ -42,7 +45,9 @@ public class CargadorDatos {
 		// FALTA CARGAR LOS DATOS DE LOS PRODUCTOS:
 		// PRIMERO HACERLO CON LA CLASE DE PRUEBA,
 		// Y LUEGO CON LA QUE LEE DE UN ARCHIVO.
-		IFuenteDatos fuenteDatosProductos = new DatosPruebaProductos(); // CAMBIAR POR EL OBJETO CORRESPONDIENTE
+		IFuenteDatos fuenteDatosProductos = 
+			new LectorArchivo("datos/productos.txt"); // CAMBIAR POR EL OBJETO CORRESPONDIENTE
+
 		List<String[]> datosBaseProductos = 
 				fuenteDatosProductos.obtenerDatosBase();
 		this.cargarDatosProductos(datosBaseProductos);

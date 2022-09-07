@@ -1,5 +1,6 @@
 package panaderia.vista;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,16 +23,18 @@ public class ProgramaPancita {
 	/**
 	 * Permite cargar los datos iniciales necesarios
 	 * para hacer el recorrido.
+	 * @throws IOException
 	 */
-	public void iniciar() {
+	public void iniciar() throws IOException {
 		this.control.cargarDatosIniciales();
 	}
 	
 	/**
 	 * Es el ciclo de control general del programa,
 	 * para saber si hay más ordenes o termina.
+	 * @throws IOException
 	 */
-	public void hacerRecorrido() {
+	public void hacerRecorrido() throws IOException {
 		Scanner consola = new Scanner(System.in);
 		String respuesta = "S";
 		while (respuesta.equals("S")) {
@@ -49,8 +52,9 @@ public class ProgramaPancita {
 	 * Coordina el proceso para poder crear una orden
 	 * de pedido, mostrarla y pedir la aceptación
 	 * del usuario.
+	 * @throws IOException
 	 */
-	private void procesarUnaOrden() {
+	private void procesarUnaOrden() throws IOException {
 		// COMPLETAR:
 		// PRIMERO PEDIR EL CÓDIGO DE LA TIENDA
 		Scanner datosUsuario = new Scanner(System.in);

@@ -17,7 +17,7 @@ import panaderia.entidades.pedido.OrdenPedido;
  * @version 1.0
  */
 public class EscritorArchivoOrdenes {
-	private static final String ARCHIVO = "OrdenesPedido.txt";
+	private static final String ARCHIVO = "./pedidos/ordenes/OrdenesPedido.txt";
 
 	/**
 	 * Guarda la información de una orden de pedido
@@ -29,7 +29,7 @@ public class EscritorArchivoOrdenes {
 
 		try {
 			BufferedWriter escritor = Files.newBufferedWriter(rutaArchivo, APPEND);
-			escritor.write(orden.toString());
+			escritor.write(orden.toString() + "\n");
 			escritor.close();
 		} catch (IOException ex) {
 			Logger logger = 

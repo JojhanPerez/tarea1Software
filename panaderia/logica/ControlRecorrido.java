@@ -1,10 +1,13 @@
 package panaderia.logica;
 
+import java.io.IOException;
+import java.lang.System.Logger;
 import java.util.List;
 
 import panaderia.datos.DatosPruebaOrdenes;
 import panaderia.datos.EscritorArchivoOrdenes;
 import panaderia.datos.IFuenteDatos;
+import panaderia.datos.LectorArchivo;
 import panaderia.entidades.base.Producto;
 import panaderia.entidades.base.Recorrido;
 import panaderia.entidades.base.Tienda;
@@ -25,7 +28,7 @@ public class ControlRecorrido {
 		this.ordenEnProceso = null;
 	}
 
-	public void cargarDatosIniciales() {
+	public void cargarDatosIniciales() throws IOException {
 		CargadorDatos cargador = new CargadorDatos(recorrido);
 		cargador.cargarDatosIniciales();
 	}
@@ -45,17 +48,22 @@ public class ControlRecorrido {
 
 	}
 
-	public void crearOrden(String nombreArchivoProductos, String codigoTienda) {
+	public void crearOrden(String nombreArchivoProductos, String codigoTienda) throws IOException {
 
-		IFuenteDatos datosPrueba = new DatosPruebaOrdenes();
+		//IFuenteDatos datosPrueba = new DatosPruebaOrdenes();
+	    IFuenteDatos datosPrueba = new LectorArchivo("ordenes/" + nombreArchivoProductos);
 		Tienda tiendaDeOrden = recorrido.buscarTienda(codigoTienda);
 
 		ordenEnProceso = new OrdenPedido(tiendaDeOrden);
 
-		List<String[]> datosDeOrden = datosPrueba.obtenerDatosBase();
+		try {
+			List<String[]> datosDeOrden = datosPrueba.obtenerDatosBase();
 
-		for (String[] orden : datosDeOrden) {
-			crearDetalle(ordenEnProceso, orden);
+			for (String[] orden : datosDeOrden) {
+				crearDetalle(ordenEnProceso, orden);
+			}
+		} catch (IOException io) {
+			
 		}
 
 	}

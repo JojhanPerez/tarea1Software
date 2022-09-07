@@ -10,7 +10,7 @@ public class DatosPruebaOrdenes implements IFuenteDatos {
         
         String[] primeraOrden = {"0001", "3"};
         String[] segundaOrden = {"0002", "2"};
-        String[] terceraOrden = {"0004", "1"};
+        String[] terceraOrden = {"0003", "1"};
 
         List<String[]> ordenes = new ArrayList<>();
         ordenes.add(primeraOrden);

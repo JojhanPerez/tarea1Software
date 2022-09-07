@@ -16,7 +16,7 @@ public class DatosPruebaTiendas implements IFuenteDatos {
 	public List<String[]> obtenerDatosBase() {
 		String[] tienda1 = {"10-10","La esquina"};
 		String[] tienda2 = {"10-20","El encuentro"};
-		String[] tienda3 = {"10-20","Tinteadero"};
+		String[] tienda3 = {"10-30","Tinteadero"};
 		List<String[]> tiendas = new ArrayList<>();
 		tiendas.add(tienda1);
 		tiendas.add(tienda2);
