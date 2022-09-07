@@ -36,6 +36,14 @@ public class ControlRecorrido {
 	
 	// COMPLETAR LOS MÉTODOS QUE FALTAN
 
+	/**
+	 * Este metodo verifica que una tienda existe
+	 * usando un metodo ya implementado y despues evalua 
+	 * lo que devuleve buscarTienda() para así darle un valor a su retorno
+	 * @param codigoTienda
+	 * @return Boolean
+	 */
+
 	public boolean existeTienda(String codigoTienda) {
 		
 		Tienda tiendaPrueba = recorrido.buscarTienda(codigoTienda);
@@ -47,6 +55,16 @@ public class ControlRecorrido {
 		}
 
 	}
+
+	/**
+	 * Crea la orden mediante la lectura del archivo que se 
+	 * encuentra en la ruta especificada y usa un código de tienda
+	 * para crear esta orden despues de verificar si esta exite.
+	 * Se usa una exepción en casao de que el archivo no exista.
+	 * @param nombreArchivoProductos
+	 * @param codigoTienda
+	 * @throws IOException
+	 */
 
 	public void crearOrden(String nombreArchivoProductos, String codigoTienda) throws IOException {
 
@@ -69,6 +87,11 @@ public class ControlRecorrido {
 
 	}
 
+	/**
+	 * Crea los detalles del pedido para mostrar al usuario
+	 * @param orden
+	 * @param datosBaseDetalle
+	 */
 	public void crearDetalle(OrdenPedido orden, String [] datosBaseDetalle) {
 
 		Producto productoDetalle = recorrido.buscarProducto(datosBaseDetalle[0]);
