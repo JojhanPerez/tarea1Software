@@ -1,5 +1,6 @@
 package panaderia.vista;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -42,6 +43,9 @@ public class ProgramaPancita {
 			respuesta = consola.next();
 			if (respuesta.equals("S")) {
 				this.procesarUnaOrden();
+			} else if (respuesta.equals("N")) {
+				System.out.println("Fin del programa. Muchas gracias.");
+				System.exit(0);
 			}
 		}
 		System.out.println("Fin del programa. Muchas gracias.");
@@ -70,6 +74,12 @@ public class ProgramaPancita {
 			System.out.println("Ingrese la ruta con los productos del pedido: ");
 			String rutaPedido = datosUsuario.nextLine();
 			// Y SOLICITAR AL CONTROL CREAR LA ORDEN.
+			File ruta = new File("./pedidos/ordenes/" + rutaPedido);
+			if (!ruta.exists()) {
+				System.out.println("La ruta que esta ingresando no existe");
+				hacerRecorrido();
+			}
+			
 			control.crearOrden(rutaPedido, codigo);
 
 			// LUEGO: PEDIR AL CONTROL LOS DATOS DE LA TIENDA

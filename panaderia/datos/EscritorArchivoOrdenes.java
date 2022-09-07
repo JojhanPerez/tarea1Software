@@ -2,6 +2,7 @@ package panaderia.datos;
 
 import java.io.BufferedWriter;
 import static java.nio.file.StandardOpenOption.APPEND;
+import static java.nio.file.StandardOpenOption.CREATE;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,7 +29,7 @@ public class EscritorArchivoOrdenes {
 		Path rutaArchivo = Paths.get(ARCHIVO);
 
 		try {
-			BufferedWriter escritor = Files.newBufferedWriter(rutaArchivo, APPEND);
+			BufferedWriter escritor = Files.newBufferedWriter(rutaArchivo, CREATE, APPEND);
 			escritor.write(orden.toString() + "\n");
 			escritor.close();
 		} catch (IOException ex) {

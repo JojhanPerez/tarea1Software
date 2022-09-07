@@ -1,8 +1,8 @@
 package panaderia.logica;
 
 import java.io.IOException;
-import java.lang.System.Logger;
 import java.util.List;
+import java.util.logging.Logger;
 
 import panaderia.datos.DatosPruebaOrdenes;
 import panaderia.datos.EscritorArchivoOrdenes;
@@ -63,7 +63,8 @@ public class ControlRecorrido {
 				crearDetalle(ordenEnProceso, orden);
 			}
 		} catch (IOException io) {
-			
+			Logger logger = Logger.getLogger(ControlRecorrido.class.getName());
+			logger.warning("No fue posible obtener los datos");
 		}
 
 	}

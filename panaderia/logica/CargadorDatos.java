@@ -2,6 +2,7 @@ package panaderia.logica;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import panaderia.datos.DatosPruebaProductos;
 import panaderia.datos.DatosPruebaTiendas;
@@ -33,24 +34,31 @@ public class CargadorDatos {
 	 * @throws IOException
 	 */
 	public void cargarDatosIniciales() throws IOException {
-		// SE DEBE CAMBIAR ESTA FUENTE, QUE ES DE PRUEBA
-		// POR UNA QUE LEA LOS DATOS DE UN ARCHIVO.
-		IFuenteDatos fuenteDatosTiendas = 
-				new LectorArchivo("datos/tiendas.txt");
-		
-		List<String[]> datosBaseTiendas = 
-				fuenteDatosTiendas.obtenerDatosBase();
-		this.cargarDatosTiendas(datosBaseTiendas);
-		
-		// FALTA CARGAR LOS DATOS DE LOS PRODUCTOS:
-		// PRIMERO HACERLO CON LA CLASE DE PRUEBA,
-		// Y LUEGO CON LA QUE LEE DE UN ARCHIVO.
-		IFuenteDatos fuenteDatosProductos = 
-			new LectorArchivo("datos/productos.txt"); // CAMBIAR POR EL OBJETO CORRESPONDIENTE
 
-		List<String[]> datosBaseProductos = 
-				fuenteDatosProductos.obtenerDatosBase();
-		this.cargarDatosProductos(datosBaseProductos);
+		try {
+
+			// SE DEBE CAMBIAR ESTA FUENTE, QUE ES DE PRUEBA
+			// POR UNA QUE LEA LOS DATOS DE UN ARCHIVO.
+			IFuenteDatos fuenteDatosTiendas = new LectorArchivo("datos/tiendas.txt");
+
+			List<String[]> datosBaseTiendas = fuenteDatosTiendas.obtenerDatosBase();
+			this.cargarDatosTiendas(datosBaseTiendas);
+
+			// FALTA CARGAR LOS DATOS DE LOS PRODUCTOS:
+			// PRIMERO HACERLO CON LA CLASE DE PRUEBA,
+			// Y LUEGO CON LA QUE LEE DE UN ARCHIVO.
+			IFuenteDatos fuenteDatosProductos = new LectorArchivo("datos/productos.txt"); // CAMBIAR POR EL OBJETO
+																							// CORRESPONDIENTE
+
+			List<String[]> datosBaseProductos = fuenteDatosProductos.obtenerDatosBase();
+			this.cargarDatosProductos(datosBaseProductos);
+
+		} catch (Exception e) {
+			Logger logger = Logger.getLogger(ControlRecorrido.class.getName());
+		    logger.warning("No es posible cargar los datos, ¡Verifique los Archivos! Hasta Pronto.");
+			System.exit(0);
+		}
+
 	}
 	
 	/**
